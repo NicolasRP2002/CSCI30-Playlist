@@ -20,6 +20,9 @@ int main() {
     //swaps the songs
     myPlaylist.swapSongs(index1, index2);
 
+    cout << "\n--- Playlist After Swap ---\n";
+    myPlaylist.showPlaylist();
+
     
 
     return 0; // Playlist destructor handles memory cleanup
