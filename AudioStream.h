@@ -2,6 +2,7 @@
 #ifndef AUDIOSTREAM_H
 #define AUDIOSTREAM_H
 #include <iostream>
+#include "AudioBuffer.h"
 
 using namespace std;
 
@@ -10,23 +11,18 @@ protected:
     string title;
     string artist;
     int duration;
+
+    AudioBuffer buffer;
 public:
-    AudioStream(string t, string a, int d){
-        title = t;
-        artist = a;
-        duration = d;
-    }
+    AudioStream(string t, string a, int d) : title(t), artist(a), duration(d), buffer(d,t)
+    {}
 
-    virtual ~AudioStream(){
-        //cout << "Destroying Song: " << endl;
-    }
+    virtual void play() = 0;
 
-    void print(){
-        cout << "The stream \"" << title << "\" is " << duration << " seconds, performed by " << artist << endl; 
-    }
+    virtual void print() = 0;
 
-    //clase abstracta sirve para que cada archivo song o podcast pueda tener su propio play()
-    virtual void play() const = 0;
+    virtual ~AudioStream() {}
+
 };
 
 #endif

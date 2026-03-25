@@ -13,10 +13,14 @@ class Song : public AudioStream{
    Song(string t, string a, int d, string aN): AudioStream(t, a, d), albumName(aN){};
 
     //function override play
-   void play() const override{
-    cout << "Now playing Song: " << title << " by " << artist << " from the album " << albumName << "." << endl;
+   void play() override{
+    cout << "Now playing Song: " << title << " by " << artist << " [Album: " << albumName << "]" << endl;
+    buffer.play();
    }
 
+   void print() override {
+    cout << "The stream \"" << title << "\" is " << duration << " seconds, performed by " << artist << "." << endl;
+   }
 
 };
 #endif
